@@ -1461,3 +1461,139 @@ textarea:focus {
     font-size: 18px;
   }
 }
+
+.camera-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.camera-stop-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+.camera-result {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  color: #cbd2e8;
+  display: flex;
+  font-size: 12px;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px 14px;
+  width: fit-content;
+}
+
+.camera-result strong {
+  color: white;
+}
+
+.camera-box {
+  background: #141c35;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  min-height: 330px;
+  overflow: hidden;
+  position: relative;
+}
+
+#signVideo,
+#signCanvas {
+  display: block;
+  height: 100%;
+  min-height: 330px;
+  object-fit: cover;
+  width: 100%;
+}
+
+#signCanvas {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.camera-placeholder {
+  align-items: center;
+  color: #d9dff4;
+  display: flex;
+  flex-direction: column;
+  inset: 0;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+}
+
+.camera-placeholder span {
+  font-size: 65px;
+  margin-bottom: 14px;
+}
+
+.camera-placeholder strong {
+  font-size: 17px;
+}
+
+.camera-placeholder small {
+  color: #909abd;
+  font-size: 11px;
+  margin-top: 7px;
+}
+
+.camera-placeholder.hidden {
+  display: none;
+}
+
+.camera-badge {
+  align-items: center;
+  background: rgba(16, 24, 47, 0.78);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 20px;
+  bottom: 15px;
+  color: #cbd2e8;
+  display: flex;
+  font-size: 10px;
+  gap: 7px;
+  left: 15px;
+  padding: 8px 12px;
+  position: absolute;
+}
+
+.camera-badge i {
+  background: #9ca6bf;
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+}
+
+.camera-badge.active i {
+  animation: cameraPulse 1s infinite;
+  background: #35b69b;
+}
+
+@keyframes cameraPulse {
+  50% {
+    box-shadow: 0 0 0 6px rgba(53, 182, 155, .18);
+  }
+}
+
+@media (max-width: 700px) {
+  .camera-buttons {
+    flex-direction: column;
+  }
+
+  .camera-buttons button {
+    width: 100%;
+  }
+
+  .camera-box {
+    min-height: 260px;
+  }
+
+  #signVideo,
+  #signCanvas {
+    min-height: 260px;
+  }
+}
