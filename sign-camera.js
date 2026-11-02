@@ -13,12 +13,14 @@ const trackingStatus = document.getElementById("trackingStatus");
 const cameraPlaceholder = document.getElementById("cameraPlaceholder");
 const cameraBadge = document.querySelector(".camera-badge");
 
-let cameraStream = null;
+let stream = null;
 let handLandmarker = null;
-let animationId = null;
+let animationFrame = null;
 let lastVideoTime = -1;
 
-async function createHandLandmarker() {
+async function loadHandModel() {
+  cameraStatus.textContent = "جاري تحميل نموذج اليد...";
+
   const vision = await FilesetResolver.forVisionTasks(
     "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.22/wasm"
   );
@@ -31,70 +33,85 @@ async function createHandLandmarker() {
     },
     runningMode: "VIDEO",
     numHands: 2,
-    minHandDetectionConfidence: 0.55,
-    minHandPresenceConfidence: 0.55,
-    minTrackingConfidence: 0.65
+    minHandDetectionConfidence: 0.5,
+    minHandPresenceConfidence: 0.5,
+    minTrackingConfidence: 0.5
   });
 }
 
 async function startCamera() {
   try {
-    startCameraBtn.disabled = true;
-    cameraStatus.textContent = "جاري تجهيز الكاميرا...";
-
-    if (!handLandmarker) {
-      await createHandLandmarker();
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      throw new Error("CAMERA_NOT_SUPPORTED");
     }
 
-    cameraStream = await navigator.mediaDevices.getUserMedia({
+    startCameraBtn.disabled = true;
+    cameraStatus.textContent = "جاري فتح الكاميرا...";
+
+    stream = await navigator.mediaDevices.getUserMedia({
       video: {
         facingMode: "user",
         width: { ideal: 640 },
-        height: { ideal: 480 },
-        frameRate: { ideal: 30, max: 30 }
+        height: { ideal: 480 }
       },
       audio: false
     });
 
-    signVideo.srcObject = cameraStream;
+    signVideo.srcObject = stream;
+    signVideo.muted = true;
+    signVideo.playsInline = true;
+
     await signVideo.play();
 
     cameraPlaceholder.classList.add("hidden");
     cameraStatus.textContent = "الكاميرا تعمل";
-    trackingStatus.textContent = "جاري تتبع اليد";
+    trackingStatus.textContent = "جاري البحث عن اليد";
     cameraBadge.classList.add("active");
 
-    resizeCanvas();
-    predictHands();
+    signCanvas.width = signVideo.videoWidth || 640;
+    signCanvas.height = signVideo.videoHeight || 480;
 
-    if (navigator.vibrate) {
-      navigator.vibrate(70);
+    if (!handLandmarker) {
+      await loadHandModel();
     }
+
+    cameraStatus.textContent = "الكاميرا تعمل";
+    detectHands();
+
   } catch (error) {
     console.error(error);
 
-    cameraStatus.textContent = "تعذر تشغيل الكاميرا";
-    trackingStatus.textContent = "تحققي من الإذن";
     startCameraBtn.disabled = false;
+    cameraStatus.textContent = "الكاميرا لم تعمل";
 
-    alert(
-      "اسمحي للموقع باستخدام الكاميرا، وتأكدي أنكِ تفتحينه من رابط GitHub Pages يبدأ بـ https."
-    );
+    if (error.name === "NotAllowedError") {
+      trackingStatus.textContent = "تم رفض إذن الكاميرا";
+      alert("افتحي إعدادات Chrome واسمحي للموقع باستخدام الكاميرا.");
+    } else if (error.name === "NotFoundError") {
+      trackingStatus.textContent = "لم يتم العثور على كاميرا";
+      alert("المتصفح لم يجد كاميرا متاحة.");
+    } else if (error.message === "CAMERA_NOT_SUPPORTED") {
+      trackingStatus.textContent = "الرابط غير آمن";
+      alert("افتحي الموقع من رابط GitHub Pages يبدأ بـ https.");
+    } else {
+      trackingStatus.textContent = "حدث خطأ";
+      alert("حدث خطأ. افتحي Console أو ابعتي صورة الرسالة.");
+    }
   }
 }
 
 function stopCamera() {
-  if (cameraStream) {
-    cameraStream.getTracks().forEach((track) => track.stop());
-    cameraStream = null;
+  if (stream) {
+    stream.getTracks().forEach((track) => track.stop());
+    stream = null;
+  }
+
+  if (animationFrame) {
+    cancelAnimationFrame(animationFrame);
+    animationFrame = null;
   }
 
   signVideo.srcObject = null;
-
-  if (animationId) {
-    cancelAnimationFrame(animationId);
-    animationId = null;
-  }
 
   const context = signCanvas.getContext("2d");
   context.clearRect(0, 0, signCanvas.width, signCanvas.height);
@@ -106,14 +123,9 @@ function stopCamera() {
   startCameraBtn.disabled = false;
 }
 
-function resizeCanvas() {
-  signCanvas.width = signVideo.videoWidth || 640;
-  signCanvas.height = signVideo.videoHeight || 480;
-}
-
-function predictHands() {
-  if (!handLandmarker || signVideo.readyState < 2) {
-    animationId = requestAnimationFrame(predictHands);
+function detectHands() {
+  if (!handLandmarker || !stream || signVideo.readyState < 2) {
+    animationFrame = requestAnimationFrame(detectHands);
     return;
   }
 
@@ -128,7 +140,7 @@ function predictHands() {
     drawHands(results);
   }
 
-  animationId = requestAnimationFrame(predictHands);
+  animationFrame = requestAnimationFrame(detectHands);
 }
 
 function drawHands(results) {
@@ -136,14 +148,15 @@ function drawHands(results) {
 
   context.clearRect(0, 0, signCanvas.width, signCanvas.height);
 
-  const drawingUtils = new DrawingUtils(context);
-
   if (!results.landmarks || results.landmarks.length === 0) {
-    trackingStatus.textContent = "لم يتم العثور على يد";
+    trackingStatus.textContent = "حرّكي يدك أمام الكاميرا";
     return;
   }
 
-  trackingStatus.textContent = `تم العثور على ${results.landmarks.length} يد`;
+  trackingStatus.textContent =
+    `تم العثور على ${results.landmarks.length} يد`;
+
+  const drawingUtils = new DrawingUtils(context);
 
   for (const landmarks of results.landmarks) {
     drawingUtils.drawConnectors(
@@ -163,8 +176,6 @@ function drawHands(results) {
     });
   }
 }
-
-window.addEventListener("resize", resizeCanvas);
 
 startCameraBtn.addEventListener("click", startCamera);
 stopCameraBtn.addEventListener("click", stopCamera);
