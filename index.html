@@ -3,23 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="وصلة - منصة مساعدة رقمية لسهولة التواصل والوصول" />
+  <meta
+    name="description"
+    content="وصلة - منصة مساعدة رقمية لسهولة التواصل والوصول"
+  />
+
   <title>وصلة | تواصل أسهل للجميع</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-
   <div class="app-shell">
 
     <header class="topbar">
       <a href="#home" class="brand" aria-label="العودة إلى الصفحة الرئيسية">
         <span class="brand-mark">✦</span>
+
         <span>
           <strong>وصلة</strong>
           <small>Wasla</small>
@@ -33,7 +41,11 @@
         <a href="#about" class="nav-link">عن وصلة</a>
       </nav>
 
-      <button class="accessibility-button" id="accessibilityBtn">
+      <button
+        class="accessibility-button"
+        id="accessibilityBtn"
+        type="button"
+      >
         <span>◉</span>
         سهولة الوصول
       </button>
@@ -41,6 +53,7 @@
 
     <main>
 
+      <!-- البداية -->
       <section class="hero-section section" id="home">
         <div class="hero-content">
           <div class="eyebrow">
@@ -65,7 +78,7 @@
             </a>
 
             <a href="#quick" class="secondary-btn">
-              جرّب العبارات السريعة
+              جرّبي العبارات السريعة
             </a>
           </div>
 
@@ -88,6 +101,7 @@
           <div class="dashboard-card">
             <div class="dashboard-top">
               <span class="dashboard-label">لوحة المساعدة</span>
+
               <span class="live-pill">
                 <i></i>
                 مباشر
@@ -96,6 +110,7 @@
 
             <div class="profile-row">
               <div class="avatar">و</div>
+
               <div>
                 <strong>أهلًا بك في وصلة</strong>
                 <small>اختاري الأداة المناسبة لكِ</small>
@@ -123,9 +138,18 @@
             </div>
 
             <div class="fake-message">
-              <span class="message-bubble">من فضلك تحدث، سأكتب كلامك هنا...</span>
+              <span class="message-bubble">
+                من فضلك تحدث، سأكتب كلامك هنا...
+              </span>
+
               <div class="sound-bars">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
               </div>
             </div>
           </div>
@@ -137,6 +161,7 @@
         </div>
       </section>
 
+      <!-- الإحصائيات -->
       <section class="stats-section">
         <div class="stat-item">
           <strong>03</strong>
@@ -159,6 +184,7 @@
         </div>
       </section>
 
+      <!-- الأدوات -->
       <section class="section tools-section" id="tools">
         <div class="section-heading">
           <div>
@@ -180,11 +206,16 @@
             </div>
 
             <h3>الكلام إلى نص</h3>
+
             <p>
               استخدمي الميكروفون لتحويل كلام الشخص الآخر إلى كلمات واضحة على الشاشة.
             </p>
 
-            <button class="card-action" data-scroll="#speechTool">
+            <button
+              class="card-action"
+              data-scroll="#speechTool"
+              type="button"
+            >
               افتحي الأداة
               <span>←</span>
             </button>
@@ -197,11 +228,16 @@
             </div>
 
             <h3>النص إلى صوت</h3>
+
             <p>
               اكتبي رسالتك وسيقوم الموقع بقراءتها بصوت واضح ليسمعها الشخص الآخر.
             </p>
 
-            <button class="card-action" data-scroll="#speechTool">
+            <button
+              class="card-action"
+              data-scroll="#speechTool"
+              type="button"
+            >
               افتحي الأداة
               <span>←</span>
             </button>
@@ -214,11 +250,16 @@
             </div>
 
             <h3>الإشارات التجريبية</h3>
+
             <p>
-              مساحة مستقبلية للتدريب على عدد محدود من الإشارات المصرية القابلة للتطوير.
+              مساحة للتدريب على عدد محدود من الإشارات المصرية القابلة للتطوير.
             </p>
 
-            <button class="card-action" data-scroll="#signTool">
+            <button
+              class="card-action"
+              data-scroll="#signTool"
+              type="button"
+            >
               افتحي الأداة
               <span>←</span>
             </button>
@@ -227,6 +268,7 @@
         </div>
       </section>
 
+      <!-- مساحة الصوت -->
       <section class="workspace-section section" id="speechTool">
         <div class="workspace-heading">
           <div>
@@ -249,7 +291,12 @@
                 <h3>استمعي، اكتبي، وتواصلي</h3>
               </div>
 
-              <button class="round-settings" id="clearSpeech" aria-label="مسح النص">
+              <button
+                class="round-settings"
+                id="clearSpeech"
+                type="button"
+                aria-label="مسح النص"
+              >
                 ↺
               </button>
             </div>
@@ -266,17 +313,29 @@
             ></textarea>
 
             <div class="panel-actions">
-              <button class="primary-btn small-btn" id="startListening">
+              <button
+                class="primary-btn small-btn"
+                id="startListening"
+                type="button"
+              >
                 <span>◉</span>
                 ابدأ الاستماع
               </button>
 
-              <button class="secondary-btn small-btn" id="speakText">
+              <button
+                class="secondary-btn small-btn"
+                id="speakText"
+                type="button"
+              >
                 <span>♧</span>
                 اقرأ النص
               </button>
 
-              <button class="ghost-btn" id="copyText">
+              <button
+                class="ghost-btn"
+                id="copyText"
+                type="button"
+              >
                 نسخ
               </button>
             </div>
@@ -294,22 +353,38 @@
             </div>
 
             <div class="mini-phrase-list">
-              <button class="mini-phrase" data-phrase="من فضلك اكتب ما قلته">
+              <button
+                class="mini-phrase"
+                data-phrase="من فضلك اكتب ما قلته"
+                type="button"
+              >
                 <span>✎</span>
                 من فضلك اكتب ما قلته
               </button>
 
-              <button class="mini-phrase" data-phrase="أحتاج إلى مساعدة">
+              <button
+                class="mini-phrase"
+                data-phrase="أحتاج إلى مساعدة"
+                type="button"
+              >
                 <span>♡</span>
                 أحتاج إلى مساعدة
               </button>
 
-              <button class="mini-phrase" data-phrase="أريد الذهاب إلى الطبيب">
+              <button
+                class="mini-phrase"
+                data-phrase="أريد الذهاب إلى الطبيب"
+                type="button"
+              >
                 <span>+</span>
                 أريد الذهاب إلى الطبيب
               </button>
 
-              <button class="mini-phrase" data-phrase="انتظر لحظة من فضلك">
+              <button
+                class="mini-phrase"
+                data-phrase="انتظر لحظة من فضلك"
+                type="button"
+              >
                 <span>◷</span>
                 انتظر لحظة من فضلك
               </button>
@@ -319,6 +394,7 @@
         </div>
       </section>
 
+      <!-- العبارات السريعة -->
       <section class="quick-section section" id="quick">
         <div class="section-heading">
           <div>
@@ -332,37 +408,61 @@
         </div>
 
         <div class="phrase-grid">
-          <button class="phrase-card blue-phrase" data-phrase="أحتاج إلى مساعدة">
+          <button
+            class="phrase-card blue-phrase"
+            data-phrase="أحتاج إلى مساعدة"
+            type="button"
+          >
             <span class="phrase-icon">♡</span>
             <strong>أحتاج إلى مساعدة</strong>
             <small>اضغطي للنطق</small>
           </button>
 
-          <button class="phrase-card purple-phrase" data-phrase="من فضلك اكتب لي">
+          <button
+            class="phrase-card purple-phrase"
+            data-phrase="من فضلك اكتب لي"
+            type="button"
+          >
             <span class="phrase-icon">✎</span>
             <strong>من فضلك اكتب لي</strong>
             <small>اضغطي للنطق</small>
           </button>
 
-          <button class="phrase-card orange-phrase" data-phrase="أريد الذهاب إلى الطبيب">
+          <button
+            class="phrase-card orange-phrase"
+            data-phrase="أريد الذهاب إلى الطبيب"
+            type="button"
+          >
             <span class="phrase-icon">+</span>
             <strong>أريد الذهاب إلى الطبيب</strong>
             <small>اضغطي للنطق</small>
           </button>
 
-          <button class="phrase-card green-phrase" data-phrase="لا أستطيع السماع">
+          <button
+            class="phrase-card green-phrase"
+            data-phrase="لا أستطيع السماع"
+            type="button"
+          >
             <span class="phrase-icon">◉</span>
             <strong>لا أستطيع السماع</strong>
             <small>اضغطي للنطق</small>
           </button>
 
-          <button class="phrase-card pink-phrase" data-phrase="أشعر بالألم">
+          <button
+            class="phrase-card pink-phrase"
+            data-phrase="أشعر بالألم"
+            type="button"
+          >
             <span class="phrase-icon">!</span>
             <strong>أشعر بالألم</strong>
             <small>اضغطي للنطق</small>
           </button>
 
-          <button class="phrase-card dark-phrase" data-phrase="انتظر لحظة من فضلك">
+          <button
+            class="phrase-card dark-phrase"
+            data-phrase="انتظر لحظة من فضلك"
+            type="button"
+          >
             <span class="phrase-icon">◷</span>
             <strong>انتظر لحظة من فضلك</strong>
             <small>اضغطي للنطق</small>
@@ -370,97 +470,88 @@
         </div>
       </section>
 
+      <!-- كاميرا الإشارات -->
       <section class="sign-section section" id="signTool">
-  <div class="sign-content">
-    <span class="section-kicker">مختبر الإشارات</span>
-
-    <h2>كاميرا تدريب الإشارات</h2>
-
-    <p>
-      هذه المرحلة تعرض اليد وتتابع حركتها فقط.
-      الترجمة الحقيقية ستضاف بعد تدريب النموذج على إشارات مصرية.
-    </p>
-
-    <div class="camera-buttons">
-      <button class="primary-btn" id="startCameraBtn">
-        تشغيل الكاميرا
-        <span>◉</span>
-      </button>
-
-      <button class="secondary-btn camera-stop-btn" id="stopCameraBtn">
-        إيقاف الكاميرا
-      </button>
-    </div>
-
-    <div class="camera-result">
-      <span>الحالة:</span>
-      <strong id="cameraStatus">الكاميرا متوقفة</strong>
-    </div>
-  </div>
-
-  <div class="camera-box">
-    <video id="signVideo" autoplay playsinline muted></video>
-    <canvas id="signCanvas"></canvas>
-
-    <div class="camera-placeholder" id="cameraPlaceholder">
-      <span>✋</span>
-      <strong>الكاميرا جاهزة</strong>
-      <small>اضغطي تشغيل الكاميرا</small>
-    </div>
-
-    <div class="camera-badge">
-      <i></i>
-      <span id="trackingStatus">لم يبدأ التتبع</span>
-    </div>
-  </div>
-      </section>
         <div class="sign-content">
-          <span class="section-kicker">المرحلة القادمة</span>
-          <h2>مختبر الإشارات المصرية</h2>
+          <span class="section-kicker">مختبر الإشارات</span>
+
+          <h2>كاميرا تدريب الإشارات</h2>
 
           <p>
-            مساحة تدريبية قابلة للتطوير للتعرف على عدد محدود من الإشارات.
-            لن ندّعي ترجمة لغة الإشارة كاملة قبل تدريب نموذج حقيقي واختباره.
+            هذه المرحلة تعرض اليد وتتابع حركتها فقط.
+            الترجمة الحقيقية ستضاف بعد تدريب النموذج على إشارات مصرية.
           </p>
 
-          <div class="future-features">
-            <span>✓ إشارات شائعة</span>
-            <span>✓ نسبة ثقة</span>
-            <span>✓ تدريب تدريجي</span>
+          <div class="camera-buttons">
+            <button
+              class="primary-btn"
+              id="startCameraBtn"
+              type="button"
+            >
+              تشغيل الكاميرا
+              <span>◉</span>
+            </button>
+
+            <button
+              class="secondary-btn camera-stop-btn"
+              id="stopCameraBtn"
+              type="button"
+            >
+              إيقاف الكاميرا
+            </button>
           </div>
 
-          <button class="primary-btn" id="demoSignBtn">
-            تجربة النموذج الأولي
-            <span>←</span>
-          </button>
+          <div class="camera-result">
+            <span>الحالة:</span>
+            <strong id="cameraStatus">الكاميرا متوقفة</strong>
+          </div>
+
+          <div class="future-features">
+            <span>✓ تتبع اليد</span>
+            <span>✓ إشارات مصرية</span>
+            <span>✓ تطوير تدريجي</span>
+          </div>
         </div>
 
-        <div class="sign-visual">
-          <div class="camera-frame">
-            <div class="camera-corner top-right"></div>
-            <div class="camera-corner top-left"></div>
-            <div class="camera-corner bottom-right"></div>
-            <div class="camera-corner bottom-left"></div>
+        <div class="camera-box">
+          <video
+            id="signVideo"
+            autoplay
+            playsinline
+            muted
+            aria-label="عرض الكاميرا"
+          ></video>
 
-            <div class="hand-symbol">✋</div>
-            <span class="camera-label">SIGN LAB</span>
+          <canvas id="signCanvas"></canvas>
+
+          <div
+            class="camera-placeholder"
+            id="cameraPlaceholder"
+          >
+            <span>✋</span>
+            <strong>الكاميرا جاهزة</strong>
+            <small>اضغطي تشغيل الكاميرا</small>
           </div>
 
-          <div class="confidence-card">
-            <span>الإشارة المتوقعة</span>
-            <strong id="signResult">مساعدة</strong>
-            <small>نسبة الثقة: تجريبية</small>
+          <div class="camera-badge">
+            <i></i>
+            <span id="trackingStatus">لم يبدأ التتبع</span>
           </div>
         </div>
       </section>
 
+      <!-- عن المشروع -->
       <section class="about-section section" id="about">
         <div class="about-card">
           <div class="about-icon">✦</div>
 
           <div>
             <span class="section-kicker">عن المشروع</span>
-            <h2>التكنولوجيا تكون أجمل عندما تجعل الحياة أسهل.</h2>
+
+            <h2>
+              التكنولوجيا تكون أجمل عندما تجعل الحياة أسهل.
+            </h2>
+
             <p>
               وصلة مشروع يركز على سهولة الوصول والتواصل الإنساني،
               ويجمع بين التصميم البسيط والأدوات المساعدة القابلة للتطوير.
@@ -477,9 +568,11 @@
 
     </main>
 
+    <!-- الفوتر -->
     <footer class="footer">
       <div class="brand footer-brand">
         <span class="brand-mark">✦</span>
+
         <span>
           <strong>وصلة</strong>
           <small>تواصل أسهل للجميع</small>
@@ -490,57 +583,115 @@
 
       <span class="footer-copy">© 2026 Wasla</span>
     </footer>
-
   </div>
 
-  <div class="accessibility-panel" id="accessibilityPanel" aria-hidden="true">
+  <!-- إعدادات الوصول -->
+  <div
+    class="accessibility-panel"
+    id="accessibilityPanel"
+    aria-hidden="true"
+  >
     <div class="accessibility-panel-head">
       <h3>إعدادات الوصول</h3>
-      <button id="closeAccessibility" aria-label="إغلاق إعدادات الوصول">×</button>
+
+      <button
+        id="closeAccessibility"
+        type="button"
+        aria-label="إغلاق إعدادات الوصول"
+      >
+        ×
+      </button>
     </div>
 
-    <button class="access-option" id="increaseFont">
+    <button
+      class="access-option"
+      id="increaseFont"
+      type="button"
+    >
       تكبير الخط
       <span>+</span>
     </button>
 
-    <button class="access-option" id="decreaseFont">
+    <button
+      class="access-option"
+      id="decreaseFont"
+      type="button"
+    >
       تصغير الخط
       <span>−</span>
     </button>
 
-    <button class="access-option" id="contrastMode">
+    <button
+      class="access-option"
+      id="contrastMode"
+      type="button"
+    >
       تباين عالٍ
       <span>◐</span>
     </button>
 
-    <button class="access-option" id="reduceMotion">
+    <button
+      class="access-option"
+      id="reduceMotion"
+      type="button"
+    >
       تقليل الحركة
       <span>〰</span>
     </button>
 
-    <button class="access-option reset-option" id="resetAccess">
+    <button
+      class="access-option reset-option"
+      id="resetAccess"
+      type="button"
+    >
       إعادة الإعدادات
       <span>↺</span>
     </button>
   </div>
 
-  <div class="toast" id="toast" role="status"></div>
+  <!-- رسائل التنبيه -->
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
 
-  <div class="phrase-modal" id="phraseModal" aria-hidden="true">
+  <!-- نافذة العبارة -->
+  <div
+    class="phrase-modal"
+    id="phraseModal"
+    aria-hidden="true"
+  >
     <div class="modal-content">
-      <button class="modal-close" id="closeModal" aria-label="إغلاق">×</button>
+      <button
+        class="modal-close"
+        id="closeModal"
+        type="button"
+        aria-label="إغلاق"
+      >
+        ×
+      </button>
+
       <span class="modal-icon">✦</span>
+
       <p>رسالتك الجاهزة</p>
+
       <h2 id="modalPhrase"></h2>
-      <button class="primary-btn modal-speak" id="modalSpeak">
+
+      <button
+        class="primary-btn modal-speak"
+        id="modalSpeak"
+        type="button"
+      >
         نطق العبارة
         <span>♧</span>
       </button>
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <!-- ملفات JavaScript -->
+  <script src="./app.js"></script>
   <script type="module" src="./sign-camera.js"></script>
 </body>
 </html>
