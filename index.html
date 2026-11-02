@@ -371,6 +371,49 @@
       </section>
 
       <section class="sign-section section" id="signTool">
+  <div class="sign-content">
+    <span class="section-kicker">مختبر الإشارات</span>
+
+    <h2>كاميرا تدريب الإشارات</h2>
+
+    <p>
+      هذه المرحلة تعرض اليد وتتابع حركتها فقط.
+      الترجمة الحقيقية ستضاف بعد تدريب النموذج على إشارات مصرية.
+    </p>
+
+    <div class="camera-buttons">
+      <button class="primary-btn" id="startCameraBtn">
+        تشغيل الكاميرا
+        <span>◉</span>
+      </button>
+
+      <button class="secondary-btn camera-stop-btn" id="stopCameraBtn">
+        إيقاف الكاميرا
+      </button>
+    </div>
+
+    <div class="camera-result">
+      <span>الحالة:</span>
+      <strong id="cameraStatus">الكاميرا متوقفة</strong>
+    </div>
+  </div>
+
+  <div class="camera-box">
+    <video id="signVideo" autoplay playsinline muted></video>
+    <canvas id="signCanvas"></canvas>
+
+    <div class="camera-placeholder" id="cameraPlaceholder">
+      <span>✋</span>
+      <strong>الكاميرا جاهزة</strong>
+      <small>اضغطي تشغيل الكاميرا</small>
+    </div>
+
+    <div class="camera-badge">
+      <i></i>
+      <span id="trackingStatus">لم يبدأ التتبع</span>
+    </div>
+  </div>
+      </section>
         <div class="sign-content">
           <span class="section-kicker">المرحلة القادمة</span>
           <h2>مختبر الإشارات المصرية</h2>
